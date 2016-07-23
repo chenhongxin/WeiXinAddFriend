@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">WeiXinAddFriend</string>
+    <string name="login_phoneTips">用户名：</string>
+    <string name="phoneHint">请输入用户名</string>
+    <string name="Login_passwordTips">密码：</string>
+    <string name="passwordHint">请输入密码</string>
+    <string name="login">登录</string>
+
+</resources>

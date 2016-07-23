@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 特殊的LinearLayout带有EditText属性 -->
+    <declare-styleable name="special_ll_with_eidttext">
+        <attr name="background" format="reference|color" />
+        <attr name="leftImage" format="reference|integer" />
+        <attr name="leftTitle" format="reference|string" />
+        <attr name="leftTitleColor" format="reference|color" />
+        <attr name="leftTitleSize" format="dimension" />
+        <attr name="editText" format="reference|string" />
+        <attr name="editHint" format="reference|string" />
+        <attr name="editTextColor" format="reference|color" />
+        <attr name="editTextSize" format="dimension" />
+        <attr name="rightImage" format="reference|integer" />
+        <attr name="rightImageSelected" format="reference|integer" />
+        <attr name="rightButtonBg" format="reference|integer" />
+        <attr name="rightButtonText" format="reference|string" />
+        <attr name="rightButtonTextSize" format="dimension" />
+        <attr name="rightButtonTextColor" format="reference|color" />
+        <attr name="topLine" format="reference|boolean" />
+        <attr name="bottomLine" format="reference|boolean" />
+        <attr name="editInputType" format="integer" />
+        <attr name="editLength" format="integer" />
+        <attr name="editable" format="reference|boolean" />
+        <attr name="foucusable" format="reference|boolean" />
+        <attr name="isNeedShowDel" format="reference|boolean" />
+        <attr name="gravity" format="reference|integer" />
+    </declare-styleable>
+
+</resources>

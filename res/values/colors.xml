@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 开始体验按钮的两种状态 -->
+    <color name="btnStartClicked">#659fff</color>
+    <color name="btnStartUnClicked">#389fff</color>
+    
+    <color name="specialTitleColor">#333</color>
+    <color name="letter_grey_deep_11">#FFB1B1B1</color>
+    <color name="col_tv_hint">#d2d2d2</color>
+    <color name="hintColor">#FFCACACA</color>
+    <color name="topViewColor">#389fff</color>
+</resources>
