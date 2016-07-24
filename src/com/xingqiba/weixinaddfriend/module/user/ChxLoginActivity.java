@@ -1,16 +1,16 @@
 package com.xingqiba.weixinaddfriend.module.user;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import com.chx.http.HttpHandler;
-import com.chx.http.HttpHandler.HttpHandlerResponse;
 import com.xingqiba.weixinaddfriend.R;
 import com.xingqiba.weixinaddfriend.base.BaseTitleActivity;
+import com.xingqiba.weixinaddfriend.module.main.MonitorAppActivity;
 import com.xingqiba.weixinaddfriend.utils.CommonFunction;
 import com.xingqiba.weixinaddfriend.widget.SpecialButton;
 import com.xingqiba.weixinaddfriend.widget.SpecialLLWithEditText;
@@ -69,18 +69,20 @@ public class ChxLoginActivity extends BaseTitleActivity {
 				showToast("请输入不少于6位的密码");
 				return;
 			}
-			new HttpHandler.Builder().setShow(true).build(context).post(this, "", params, new HttpHandlerResponse() {
-				
-				@Override
-				public void onSuccess(String data) {
-					
-				}
-				
-				@Override
-				public void onFaile(String data) {
-					
-				}
-			});
+			Intent intent = getIntent(MonitorAppActivity.class);
+			startActivity(intent);
+//			new HttpHandler.Builder().setShow(true).build(context).post(this, "", params, new HttpHandlerResponse() {
+//				
+//				@Override
+//				public void onSuccess(String data) {
+//					
+//				}
+//				
+//				@Override
+//				public void onFaile(String data) {
+//					
+//				}
+//			});
 		}
 			break;
 		}

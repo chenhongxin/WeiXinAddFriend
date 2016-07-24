@@ -13,5 +13,10 @@
     <string name="android_id">机器码：</string>
     <string name="phone">手机号码：</string>
     <string name="phoneHint">请正确填写，注册后将成为您的车享付账号</string>
+    <string name="monitor_app">心跳检测</string>
+    <string name="device_id">设备号：</string>
+    <string name="last_monitor_time">最后一次心跳时间：</string>
+    <string name="last_notification_information">最后一次通知信息：</string>
+    <string name="start_monitor">开始监控</string>
 
 </resources>

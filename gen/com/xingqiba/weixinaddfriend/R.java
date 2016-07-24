@@ -370,31 +370,33 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int loading8=0x7f020009;
     }
     public static final class id {
-        public static final int activity_back_btn=0x7f090012;
-        public static final int activity_right_btn=0x7f090013;
-        public static final int activity_right_text=0x7f090014;
-        public static final int activity_title_text=0x7f090015;
-        public static final int bottomLine=0x7f090011;
-        public static final int btn_common=0x7f09000e;
+        public static final int activity_back_btn=0x7f090014;
+        public static final int activity_right_btn=0x7f090015;
+        public static final int activity_right_text=0x7f090016;
+        public static final int activity_title_text=0x7f090017;
+        public static final int bottomLine=0x7f090013;
+        public static final int btn_common=0x7f090010;
         public static final int chx_login_et_password=0x7f090001;
         public static final int chx_login_et_username=0x7f090000;
         public static final int chx_login_sb_login=0x7f090002;
         public static final int chx_login_tv_register=0x7f090003;
-        public static final int chx_register_et_newpassword=0x7f090006;
-        public static final int chx_register_et_password=0x7f090005;
-        public static final int chx_register_et_phone=0x7f090007;
-        public static final int chx_register_et_username=0x7f090004;
-        public static final int chx_register_sb_register=0x7f090009;
-        public static final int chx_register_tv_android_id=0x7f090008;
-        public static final int clv_listview=0x7f090016;
-        public static final int et_value=0x7f09000d;
-        public static final int id_tv_loadingmsg=0x7f090018;
-        public static final int img_del=0x7f090010;
-        public static final int img_leftImage=0x7f09000b;
-        public static final int img_nextIcon=0x7f09000f;
-        public static final int loading_imageview=0x7f090017;
-        public static final int topLine=0x7f09000a;
-        public static final int tv_leftTitle=0x7f09000c;
+        public static final int chx_monitor_sb_test=0x7f090005;
+        public static final int chx_monitor_tv_device_id=0x7f090004;
+        public static final int chx_register_et_newpassword=0x7f090008;
+        public static final int chx_register_et_password=0x7f090007;
+        public static final int chx_register_et_phone=0x7f090009;
+        public static final int chx_register_et_username=0x7f090006;
+        public static final int chx_register_sb_register=0x7f09000b;
+        public static final int chx_register_tv_android_id=0x7f09000a;
+        public static final int clv_listview=0x7f090018;
+        public static final int et_value=0x7f09000f;
+        public static final int id_tv_loadingmsg=0x7f09001a;
+        public static final int img_del=0x7f090012;
+        public static final int img_leftImage=0x7f09000d;
+        public static final int img_nextIcon=0x7f090011;
+        public static final int loading_imageview=0x7f090019;
+        public static final int topLine=0x7f09000c;
+        public static final int tv_leftTitle=0x7f09000e;
     }
     public static final class layout {
         public static final int chx_login_activity=0x7f030000;
@@ -410,14 +412,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int Register_newpasswordTips=0x7f070005;
         public static final int android_id=0x7f07000a;
         public static final int app_name=0x7f070000;
+        public static final int device_id=0x7f07000e;
         public static final int forgetPwd=0x7f070008;
+        public static final int last_monitor_time=0x7f07000f;
+        public static final int last_notification_information=0x7f070010;
         public static final int login=0x7f070007;
         public static final int login_usernameTips=0x7f070001;
+        public static final int monitor_app=0x7f07000d;
         public static final int newpasswordHint=0x7f070006;
         public static final int passwordHint=0x7f070004;
         public static final int phone=0x7f07000b;
         public static final int phoneHint=0x7f07000c;
         public static final int register=0x7f070009;
+        public static final int start_monitor=0x7f070011;
         public static final int usernameHint=0x7f070002;
     }
     public static final class style {

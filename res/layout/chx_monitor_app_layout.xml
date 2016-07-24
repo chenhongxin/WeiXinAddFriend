@@ -1,9 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.xingqiba.weixinaddfriend"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
     <include layout="@layout/layout_top" />
+    
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/device_id"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp08"
+            android:id="@+id/chx_monitor_tv_device_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:layout_marginRight="@dimen/dp15"
+            android:ems="15"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_monitor_time"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016-07-19 14:52:18"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_notification_information"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp08"
+            android:layout_width="wrap_content"
+            android:text="快睡觉发"
+            android:layout_height="wrap_content"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+    </LinearLayout>
+    
+    <com.xingqiba.weixinaddfriend.widget.SpecialButton
+        android:id="@+id/chx_monitor_sb_test"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp35"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="@string/start_monitor"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp16"
+        app:angle_all="5dp"
+        app:isNeedCheck="true" />
 
 </LinearLayout>
