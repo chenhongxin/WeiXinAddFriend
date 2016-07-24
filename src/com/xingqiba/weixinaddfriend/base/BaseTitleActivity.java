@@ -1,11 +1,16 @@
 package com.xingqiba.weixinaddfriend.base;
 
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xingqiba.weixinaddfriend.R;
+import com.xingqiba.weixinaddfriend.utils.MyURLSpan;
+import com.xingqiba.weixinaddfriend.utils.MyURLSpan.MyClickListener;
 
 /**
  * Created by wangtao on 16/1/19.
@@ -33,10 +38,31 @@ public abstract class BaseTitleActivity extends BaseActivity implements View.OnC
     public void setTitle(String title) {
         titleText.setText(title);
     }
+    
+    public void setTitle(int title) {
+        titleText.setText(getResources().getString(title));
+    }
 
     public void showBack(){
     	backBtn.setVisibility(View.VISIBLE);
     }
+    
+    @SuppressWarnings("deprecation")
+	public void handleTextViewURl(String text, TextView view) {
+		int start = 0;
+		int end = text.length();
+		SpannableString spannableInfo = new SpannableString(text);
+		spannableInfo.setSpan(new MyURLSpan(context, new MyClickListener() {
+			
+			@Override
+			public void onMyClick(View view) {
+				widgetClick(view);
+			}
+		}){}, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		view.append(spannableInfo);
+		view.setHighlightColor(getResources().getColor(android.R.color.transparent));
+		view.setMovementMethod(LinkMovementMethod.getInstance());
+	}
     
     @Override
     public void onClick(View view) {

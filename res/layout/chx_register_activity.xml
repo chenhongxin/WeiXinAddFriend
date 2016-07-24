@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.xingqiba.weixinaddfriend"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/layout_top" />
+
+    <com.xingqiba.weixinaddfriend.widget.SpecialLLWithEditText
+        android:id="@+id/chx_register_et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        app:editHint="@string/usernameHint"
+        app:editInputType="-1"
+        app:editLength="32"
+        app:editTextSize="@dimen/sp14"
+        app:isNeedShowDel="true"
+        app:leftTitle="@string/login_usernameTips"
+        app:leftTitleSize="@dimen/sp16" />
+
+    <com.xingqiba.weixinaddfriend.widget.SpecialLLWithEditText
+        android:id="@+id/chx_register_et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        app:editHint="@string/passwordHint"
+        app:editInputType="5"
+        app:editLength="30"
+        app:editTextSize="@dimen/sp14"
+        app:isNeedShowDel="true"
+        app:leftTitle="@string/Login_passwordTips"
+        app:leftTitleSize="@dimen/sp16" />
+
+    <com.xingqiba.weixinaddfriend.widget.SpecialLLWithEditText
+        android:id="@+id/chx_register_et_newpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        app:editLength="30"
+        app:editHint="@string/newpasswordHint"
+        app:editInputType="5"
+        app:editTextSize="@dimen/sp14"
+        app:isNeedShowDel="true"
+        app:leftTitle="@string/Register_newpasswordTips"
+        app:leftTitleSize="@dimen/sp16" />
+
+    <com.xingqiba.weixinaddfriend.widget.SpecialLLWithEditText
+        android:id="@+id/chx_register_et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        app:editHint="@string/phoneHint"
+        app:editInputType="2"
+        app:editLength="11"
+        app:editTextSize="@dimen/sp14"
+        app:isNeedShowDel="true"
+        app:leftTitle="@string/phone"
+        app:leftTitleSize="@dimen/sp16" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/android_id"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp08"
+            android:id="@+id/chx_register_tv_android_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/specialTitleColor"
+            android:textSize="@dimen/sp16" />
+    </LinearLayout>
+
+    <com.xingqiba.weixinaddfriend.widget.SpecialButton
+        android:id="@+id/chx_register_sb_register"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="@string/register"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp18"
+        app:angle_all="5dp"
+        app:isNeedCheck="true" />
+
+</LinearLayout>

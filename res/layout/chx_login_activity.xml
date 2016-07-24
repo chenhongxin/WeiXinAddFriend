@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp15"
-        app:editHint="@string/phoneHint"
+        app:editHint="@string/usernameHint"
         app:editInputType="-1"
-        app:editLength="11"
+        app:editLength="32"
         app:editTextSize="@dimen/sp14"
         app:isNeedShowDel="true"
-        app:leftTitle="@string/login_phoneTips"
+        app:leftTitle="@string/login_usernameTips"
         app:leftTitleSize="@dimen/sp16" />
 
     <com.xingqiba.weixinaddfriend.widget.SpecialLLWithEditText
@@ -27,13 +27,14 @@
         android:layout_marginTop="@dimen/dp15"
         app:editHint="@string/passwordHint"
         app:editInputType="5"
+        app:editLength="30"
         app:editTextSize="@dimen/sp14"
         app:isNeedShowDel="true"
         app:leftTitle="@string/Login_passwordTips"
         app:leftTitleSize="@dimen/sp16" />
 
     <com.xingqiba.weixinaddfriend.widget.SpecialButton
-        android:id="@+id/btn_login"
+        android:id="@+id/chx_login_sb_login"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp40"
         android:layout_marginLeft="@dimen/dp15"
@@ -44,5 +45,16 @@
         android:textSize="@dimen/sp18"
         app:angle_all="5dp"
         app:isNeedCheck="true" />
+
+    <TextView
+        android:id="@+id/chx_login_tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp15"
+        android:text="@string/forgetPwd"
+        android:textColor="@color/color_a9"
+        android:textSize="@dimen/sp14" />
 
 </LinearLayout>
