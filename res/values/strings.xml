@@ -1,8 +1,10 @@
 <resources>
 
-    <string name="app_name">WeiXinAddFriend</string>
-    <string name="login_usernameTips">用户名：</string>
-    <string name="usernameHint">请输入用户名</string>
+    <string name="app_name">微信自动添加好友</string>
+    <string name="login_usernameTips">微信号：</string>
+    <string name="usernameHint">请输入微信号</string>
+    <string name="realName">姓名：</string>
+    <string name="realNameHint">请输入您的姓名</string>
     <string name="Login_passwordTips">密码：</string>
     <string name="passwordHint">请输入6&#8211;30位的密码</string>
     <string name="Register_newpasswordTips">确认密码：</string>

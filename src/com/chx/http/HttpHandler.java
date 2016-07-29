@@ -14,7 +14,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 public class HttpHandler {
 
 	private static HttpHandler handler;
-	private String path = "http://yushengjun.tunnel.qydev.com/";
+	private String path = "http://114.55.114.35:8080/";
 	private boolean isShow;
 	private static CustomProgressDialog dialog;
 
@@ -65,8 +65,14 @@ public class HttpHandler {
 						try {
 							JSONObject object = JSONObject.parseObject(response
 									+ "");
-							String data = object.getString("data");
-							httpResponse.onSuccess(data);
+							String errorCode = object.getString("errorCode");
+							String errorMsg = object.getString("errorMsg");
+							if("0".equals(errorCode)){
+								String data = object.getString("data");
+								httpResponse.onSuccess(errorMsg, data);
+							}else{
+								httpResponse.onFaile(errorMsg + "");
+							}
 						} catch (Exception e) {
 							e.printStackTrace();
 							httpResponse.onFaile(e.getMessage() + "");
@@ -79,9 +85,9 @@ public class HttpHandler {
 	}
 
 	public interface HttpHandlerResponse {
-		public void onSuccess(String data);
+		public void onSuccess(String msg, String data);
 
-		public void onFaile(String data);
+		public void onFaile(String msg);
 	}
 
 	public static class Builder{

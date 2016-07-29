@@ -42,6 +42,12 @@ public abstract class BaseTitleActivity extends BaseActivity implements View.OnC
     public void setTitle(int title) {
         titleText.setText(getResources().getString(title));
     }
+    
+    public void setRightText(String right){
+    	rightText.setText(right);
+    	rightText.setVisibility(View.VISIBLE);
+    	rightBtn.setVisibility(View.VISIBLE);
+    }
 
     public void showBack(){
     	backBtn.setVisibility(View.VISIBLE);
