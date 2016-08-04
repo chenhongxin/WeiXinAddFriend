@@ -62,26 +62,32 @@ public class HttpHandler {
 
 					@Override
 					public void run() {
-						try {
-							JSONObject object = JSONObject.parseObject(response
-									+ "");
-							String errorCode = object.getString("errorCode");
-							String errorMsg = object.getString("errorMsg");
-							if("0".equals(errorCode)){
-								String data = object.getString("data");
-								httpResponse.onSuccess(errorMsg, data);
-							}else{
-								httpResponse.onFaile(errorMsg + "");
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
-							httpResponse.onFaile(e.getMessage() + "");
-						}
+						call(response);
 					}
 				});
+			}else{
+				call(response);
 			}
 		}
-
+		
+		private void call(String response){
+			try {
+				JSONObject object = JSONObject.parseObject(response
+						+ "");
+				String errorCode = object.getString("errorCode");
+				String errorMsg = object.getString("errorMsg");
+				if("0".equals(errorCode)){
+					String data = object.getString("data");
+					httpResponse.onSuccess(errorMsg, data);
+				}else{
+					httpResponse.onFaile(errorMsg + "");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				httpResponse.onFaile(e.getMessage() + "");
+			}
+		}
+		
 	}
 
 	public interface HttpHandlerResponse {

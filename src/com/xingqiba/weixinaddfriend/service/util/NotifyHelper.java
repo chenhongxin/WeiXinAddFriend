@@ -1,6 +1,7 @@
 package com.xingqiba.weixinaddfriend.service.util;
 
 import java.util.Calendar;
+
 import android.annotation.SuppressLint;
 import android.app.KeyguardManager;
 import android.app.PendingIntent;
@@ -67,7 +68,8 @@ public class NotifyHelper {
         return km.inKeyguardRestrictedInputMode() || !isScreenOn(context);
     }
 
-    @SuppressLint("NewApi")
+    @SuppressWarnings("deprecation")
+	@SuppressLint("NewApi")
 	public static boolean isScreenOn(Context context) {
         PowerManager pm = getPowerManager(context);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {

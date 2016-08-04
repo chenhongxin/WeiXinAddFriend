@@ -5,9 +5,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.content.Intent;
-import android.os.CountDownTimer;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,7 +23,6 @@ import com.xingqiba.weixinaddfriend.module.user.ChxLoginActivity;
 import com.xingqiba.weixinaddfriend.service.LocalService;
 import com.xingqiba.weixinaddfriend.service.RemoteService;
 import com.xingqiba.weixinaddfriend.service.WeiXinAccessService;
-import com.xingqiba.weixinaddfriend.service.WeiXinNotificationService;
 import com.xingqiba.weixinaddfriend.utils.SharedPreferencesTool;
 import com.xingqiba.weixinaddfriend.widget.SpecialButton;
 
@@ -45,19 +44,15 @@ public class MonitorAppActivity extends BaseTitleActivity {
 	@Override
 	public void initControl() {
 
-		android_id = Secure.getString(getContentResolver(),
-				Secure.ANDROID_ID);
-		
-		// 兩個服務首先得启动起来
-		this.startService(new Intent(this, LocalService.class));
-		this.startService(new Intent(this, RemoteService.class));
+		android_id = Secure.getString(getContentResolver(), Secure.ANDROID_ID);
 
 		chx_monitor_tv_device_id = (TextView) findViewById(R.id.chx_monitor_tv_device_id);
 		chx_monitor_tv_time = (TextView) findViewById(R.id.chx_monitor_tv_time);
 		chx_monitor_tv_message = (TextView) findViewById(R.id.chx_monitor_tv_message);
 		chx_monitor_sb_test = (SpecialButton) findViewById(R.id.chx_monitor_sb_test);
-		setRightText("退出登录");		
+		setRightText("退出登录");
 		chx_monitor_tv_device_id.setText(android_id + "");
+
 	}
 
 	@Override
@@ -68,23 +63,32 @@ public class MonitorAppActivity extends BaseTitleActivity {
 	}
 
 	boolean start = false;
+	Intent localService;
+	Intent remoteService;
+
 	@Override
 	public void widgetClick(View view) {
 		switch (view.getId()) {
 		case R.id.chx_monitor_sb_test: {
-			if(start){
-				showToast("已监控中...");
-				return;
-			}
 			if (!openAccessibilityServiceSettings()) {
 				return;
 			}
-			if (!openNotificationServiceSettings()) {
+			if (start) {
+				showToast("已监控中...");
 				return;
 			}
 			start = true;
-			timer.start();
 			chx_monitor_sb_test.setText("监控中");
+			// 兩個服務首先得启动起来
+			if (localService == null) {
+				localService = new Intent(this, LocalService.class);
+				remoteService = new Intent(this, RemoteService.class);
+				this.startService(localService);
+				this.startService(remoteService);
+				Intent intent = new Intent(
+						"android.intent.action.BootBroadcast");
+				sendBroadcast(intent);
+			}
 			getMonitor();
 		}
 			break;
@@ -105,19 +109,51 @@ public class MonitorAppActivity extends BaseTitleActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		timer.cancel();
-		timer = null;
 	}
 
-	public void onEvent(Object data) {
+	@Override
+	public void onLowMemory() {
+		Log.i("json", "onLowMemory");
+		showToast("onLowMemory");
+		recreate();
+		super.onLowMemory();
+	}
+
+	@Override
+	public void onTrimMemory(int level) {
+		Log.i("json", "level:" + level);
+		// showToast("level:" + level);
+		super.onTrimMemory(level);
+	}
+
+	public void onEvent(final Object data) {
 		if (BroadCastKeySets.ADDUSERINFO.equals(data.toString().split(",")[0])) {
-			notificationMessage(data);
+			chx_monitor_sb_test.post(new Runnable() {
+
+				@Override
+				public void run() {
+					notificationMessage(data);
+				}
+			});
 		}
 	}
 
+	String friend = "";
+
 	private void notificationMessage(Object data) {
 		final String friendName = data.toString().split(",")[1];
-		String noticeMessage = data.toString().split(",")[2];
+		if (friendName.equals(friend)) {
+			chx_monitor_sb_test.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					friend = "";
+				}
+			}, 10000);
+			return;
+		}
+		friend = friendName;
+		String noticeMessage = "没有通知信息";
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",
 				Locale.CHINESE);
@@ -164,77 +200,46 @@ public class MonitorAppActivity extends BaseTitleActivity {
 
 							@Override
 							public void onSuccess(String msg, String data) {
-
+								showToast("" + msg);
 							}
 
 							@Override
 							public void onFaile(String msg) {
 								showToast(msg + "");
+								start = false;
 							}
 						});
 	}
 
 	/** 打开辅助服务的设置 */
 	private boolean openAccessibilityServiceSettings() {
-		boolean isOpen = false;
+		boolean isOpen = true;
 		if (!WeiXinAccessService.isRunning()) {
 			try {
 				Intent intent = new Intent(
 						Settings.ACTION_ACCESSIBILITY_SETTINGS);
 				startActivity(intent);
+				isOpen = false;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
-			isOpen = true;
 		}
 		return isOpen;
 	}
-
-	private boolean openNotificationServiceSettings() {
-		boolean isOpen = false;
-		if (!WeiXinNotificationService.isRunning()) {
-			try {
-				Intent intent = new Intent(
-						Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS);
-				startActivity(intent);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			isOpen = true;
-		}
-		return isOpen;
-	}
-
-	// @Override
-	// public void onBackPressed(){
-	// //按返回键返回桌面
-	// moveTaskToBack(true);
-	// }
 
 	@Override
 	public void onBackPressed() {
 		// 按返回键返回桌面
-		Intent intent = new Intent(Intent.ACTION_MAIN);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.addCategory(Intent.CATEGORY_HOME);
-		startActivity(intent);
+		moveTaskToBack(true);
 	}
 
-	int time = 5 * 60 * 60 * 1000;
-
-	CountDownTimer timer = new CountDownTimer(time, 1000) {
-
-		@Override
-		public void onTick(long millisUntilFinished) {
-		}
-
-		@Override
-		public void onFinish() {
-			getMonitor();
-			timer.start();
-		}
-	};
+	// @Override
+	// public void onBackPressed() {
+	// // 按返回键返回桌面
+	// Intent intent = new Intent(Intent.ACTION_MAIN);
+	// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	// intent.addCategory(Intent.CATEGORY_HOME);
+	// startActivity(intent);
+	// }
 
 }
